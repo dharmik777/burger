@@ -1,5 +1,5 @@
 var express = require("express");
-var PORT = process.env.PORT || 3306
+var PORT = process.env.PORT || 8000
 
 var app = express();
 
@@ -14,3 +14,5 @@ app.use(routes);
 app.listen(PORT, function(){
     console.log("All is well on http://localhost:" + PORT);
 });
+
+// done(?)

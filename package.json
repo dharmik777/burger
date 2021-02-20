@@ -1,21 +1,22 @@
 {
-  "name": "burger",
+  "name": "burger-looper",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A fun burger app",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dharmik777/burger.git"
+    "url": "git+https://github.com/joemc9011/Burger-Looper.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/dharmik777/burger/issues"
+    "url": "https://github.com/joemc9011/Burger-Looper/issues"
   },
-  "homepage": "https://github.com/dharmik777/burger#readme",
+  "homepage": "https://github.com/joemc9011/Burger-Looper#readme",
   "dependencies": {
     "express": "^4.17.1",
     "mysql": "^2.18.1"
