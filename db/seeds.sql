@@ -1,10 +1,8 @@
+INSERT INTO burgers (burger_name, devoured)
+VALUES ("Krabby Patty", false);
 
-###seeds 
+INSERT INTO burgers (burger_name, devoured)
+VALUES ("Cheeseburger", false);
 
-INSERT INTO burgers (burger_name) VALUES ('Chickpea Burger');
-INSERT INTO burgers (burger_name) VALUES ('Masala Burger');
-INSERT INTO burgers (burger_name) VALUES ('Beet Burger');
-INSERT INTO burgers (burger_name) VALUES ('California Burger');
-INSERT INTO burgers (burger_name) VALUES ('Quinoa Burger');
-INSERT INTO burgers (burger_name) VALUES ('Black Bean Burger'):
-INSERT INTO burgers (burger_name) VALUES ('Sweet Potato');
+INSERT INTO burgers (burger_name, devoured)
+VALUES ("Veggie Burger", false);
