@@ -1,41 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eat da burger</title>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/assets/css/style.css" type="text/css" />
+    <title>EAT-DA-BURGER!</title>
     <script src="https://code.jquery.com/jquery.js"></script>
-    <script src="./assets/burgers.js"></script>
+    <script src="./assets/js/burgerJS.js"></script>
+  </head>
+  <body>
+    <h1>BURGERS</h1>
 
+    <h2>Ready to EAT BURGERS</h2>
 
-</head>
+    <ul id="notEatenBurger"></ul>
 
-<body>
-    
-        
-    <h1>Eat Da Burger</h1>
+    <h2>DEVOURED BURGERS</h2>
 
+    <ul id="devoured"></ul>
 
+    <h2>Name a Burger</h2>
+    <form class="create-form">
+      <div class="form-group">
+        <label for="ca">Burger Name:</label>
+        <input type="text" id="ca" name="name" />
+      </div>
 
-    <h2 id="search">Burger Name!</h2>
-    <form class="addburger">
-        <input type="text" name="burger_name" value id="burger_name">
-        <button type="submit"  id="enter-button">Make that Burger!</button>
+   
+      <button type="submit">ADD BURGER</button>
     </form>
-
-    <h2>Devour, Delete, Repeat</h2>
-
-    <h3> To be Devoured </h3>
-    <ul id="notdev"></ul>
-
-
-
-    <h3> Devoured </h3>
-    <ul id="devburgs"></ul>
-
-
-
-</body>
-
+  </body>
 </html>
