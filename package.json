@@ -2,7 +2,7 @@
   "name": "eat-the-burger",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "dev": "nodemon server.js",
     "start": "node server.js",
@@ -10,15 +10,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kaitlinkenney/eat-the-burger.git"
+    "url": ""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/kaitlinkenney/eat-the-burger/issues"
+    "url": ""
   },
-  "homepage": "https://github.com/kaitlinkenney/eat-the-burger#readme",
+  "homepage": "",
   "dependencies": {
     "express": "^4.17.1",
     "mysql": "^2.18.1"
