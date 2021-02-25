@@ -1,36 +1,41 @@
-
-const burger = require("../models/burger.js");
 const express = require("express");
-const app = express.Router();
 
-app.get("/", function (req, res) {
+const router = express.Router();
+
+
+const burger = require("../model/model.js");
+
+router.get("/", function (req, res) {
   res.sendFile(path.join(__dirname, "public/index.html"));
 });
 
-app.get("/burgers", function (req, res) {
+
+router.get("/burgers", function (req, res) {
   burger.all(function (data) {
     res.json({ burgers: data });
   });
 });
 
-app.post("/burgers", function (req, res) {
-  burger.insert([
-    "burger_name", "devoured"
-  ], [
-    req.body.burger_name, req.body.devoured
-  ], function (result) {
+router.post("/burgers", function (req, res) {
+  burger.create(
+    ["burger_name"],
+    [req.body.burger_name],
+    function (result) {
 
-    res.json(result);
-  });
+      res.json({ id: result.insertId });
+    });
 });
 
-app.put("/burgers/:id", function (req, res) {
-  var condition = "id = " + req.params.id;
+router.put("/burgers/:id", function (req, res) {
+  let condition = "id = " + req.params.id;
+
+  console.log("Condition", condition);
 
   burger.update({
     devoured: req.body.devoured
   }, condition, function (result) {
     if (result.changedRows == 0) {
+
       return res.status(404).end();
     } else {
       res.json({ id: req.params.id });
@@ -38,11 +43,12 @@ app.put("/burgers/:id", function (req, res) {
   });
 });
 
-app.delete("/burgers/:id", function (req, res) {
+router.delete("/burgers/:id", function (req, res) {
   var condition = "id = " + req.params.id;
 
   burger.delete(condition, function (result) {
     if (result.affectedRows == 0) {
+
       return res.status(404).end();
     } else {
       res.status(200).end();
@@ -50,4 +56,5 @@ app.delete("/burgers/:id", function (req, res) {
   });
 });
 
-module.exports = app;
+
+module.exports = router;

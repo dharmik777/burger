@@ -1,52 +1,49 @@
-// Import MySQL connection.
-const connection = require("./connection.js");
+var connection = require("./connection.js");
 
-// Helper function for SQL syntax.
-// The helper function loops through and creates an array of question marks - ["?", "?", "?"] - and turns it into a string.
+
 function printQuestionMarks(num) {
   var arr = [];
 
-  for (var i = 0; i < num; i++) {
+  for (let i = 0; i < num; i++) {
     arr.push("?");
   }
 
   return arr.toString();
 }
 
-// Helper function to convert object key/value pairs to SQL syntax
 function objToSql(ob) {
-  var arr = [];
+  let arr = [];
 
-// loop through the keys and push the key/value as a string int arr
-  for (var key in ob) {
-    var value = ob[key];
+ 
+  for (let key in ob) {
+    let value = ob[key];
 
     if (Object.hasOwnProperty.call(ob, key)) {
+
       if (typeof value === "string") {
         value = "'" + value + "'";
       }
+    
       arr.push(key + "=" + value);
     }
   }
 
+
   return arr.toString();
 }
 
-// Object for all our SQL statement functions.
-const orm = {
-  //selects all from the burgers table
-  selectAll: function (tableInput, cb) {
+
+let orm = {
+  all: function(tableInput, cb) {
     var queryString = "SELECT * FROM " + tableInput + ";";
-    connection.query(queryString, function (err, result) {
+    connection.query(queryString, function(err, result) {
       if (err) {
         throw err;
       }
       cb(result);
     });
   },
-
-  //adds a new burger into the table
-  insertOne: function (table, cols, vals, cb) {
+  create: function(table, cols, vals, cb) {
     var queryString = "INSERT INTO " + table;
 
     queryString += " (";
@@ -56,7 +53,9 @@ const orm = {
     queryString += printQuestionMarks(vals.length);
     queryString += ") ";
 
-    connection.query(queryString, vals, function (err, result) {
+    console.log(queryString);
+
+    connection.query(queryString, vals, function(err, result) {
       if (err) {
         throw err;
       }
@@ -65,8 +64,7 @@ const orm = {
     });
   },
 
-  //updates the burger with the desired id assignment(condition)
-  updateOne: function (table, objColVals, condition, cb) {
+  update: function(table, objColVals, condition, cb) {
     var queryString = "UPDATE " + table;
 
     queryString += " SET ";
@@ -74,7 +72,8 @@ const orm = {
     queryString += " WHERE ";
     queryString += condition;
 
-    connection.query(queryString, function (err, result) {
+    console.log(queryString);
+    connection.query(queryString, function(err, result) {
       if (err) {
         throw err;
       }
@@ -82,14 +81,12 @@ const orm = {
       cb(result);
     });
   },
-
-  //deletes a burger where requested
-  deleteOne: function (table, condition, cb) {
+  delete: function(table, condition, cb) {
     var queryString = "DELETE FROM " + table;
     queryString += " WHERE ";
     queryString += condition;
 
-    connection.query(queryString, function (err, result) {
+    connection.query(queryString, function(err, result) {
       if (err) {
         throw err;
       }
@@ -97,7 +94,7 @@ const orm = {
       cb(result);
     });
   }
-}
+};
 
-// Export the orm object for the model (burger.js).
+
 module.exports = orm;
